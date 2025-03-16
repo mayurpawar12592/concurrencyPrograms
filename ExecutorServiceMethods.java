@@ -1,9 +1,6 @@
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 public class ExecutorServiceMethods {
     public static void main(String[] args) throws InterruptedException {
@@ -16,6 +13,7 @@ public class ExecutorServiceMethods {
         };
 
         Callable<Integer> callable2 = () -> {
+            Thread.sleep(1000);
             System.out.println("Callable Task 2");
             return 2;
         };
@@ -34,8 +32,11 @@ public class ExecutorServiceMethods {
         System.out.println("===================================InvokeAny()=======================================");
         ExecutorService executorService1 = Executors.newSingleThreadExecutor();
         try {
-            executorService1.invokeAny(listOfCallableTask);
+           Integer result = executorService1.invokeAny(listOfCallableTask, 1, TimeUnit.MILLISECONDS);
+            System.out.println("Result :"+result);
             executorService1.shutdown();
+        }catch (TimeoutException ex){
+            //TimeoutException Exception
         } catch (ExecutionException ex) {
            //Exception
         }

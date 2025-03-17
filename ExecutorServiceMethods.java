@@ -40,5 +40,35 @@ public class ExecutorServiceMethods {
         } catch (ExecutionException ex) {
            //Exception
         }
+        System.out.println("===================================Future.get(),isDone(),isComplete()=======================================");
+        ExecutorService service =Executors.newSingleThreadExecutor();
+        Future<Integer> future = service.submit(()->{
+            try {
+                System.out.println("task started");
+                Thread.sleep(2000);
+
+            }catch(InterruptedException e){
+                System.out.println("task InterruptedException");
+            }
+            System.out.println("task completed");
+            return 12;
+        });
+        try {
+            //int i = future.get(1, TimeUnit.SECONDS);
+         //   System.out.println("i:- " + i);
+            Thread.sleep(1000);
+            future.cancel(false);
+            System.out.println("isDone:- " + future.isDone());
+            System.out.println("iSCancelled:- " + future.isCancelled());
+//        }catch (TimeoutException e) {
+//            throw new RuntimeException(e);
+//        } catch (ExecutionException e) {
+//            throw new RuntimeException(e);
+//        }
+        }catch(InterruptedException e){
+            //
+        }
+        service.shutdown();
+
     }
 }

@@ -32,8 +32,16 @@ public class ExecutorDemo {
         //used for secheduling jobs
         System.out.println("ScheduledExecutorService:-");
         ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(3);
-        scheduledExecutorService.scheduleAtFixedRate(new Task(9), 0, 5, TimeUnit.SECONDS);
+        scheduledExecutorService.scheduleAtFixedRate(new Task(9),
+                0,
+                5,
+                TimeUnit.SECONDS);
 
+        ScheduledExecutorService scheduledExecutorService1=Executors.newScheduledThreadPool(1);
+        scheduledExecutorService1.scheduleWithFixedDelay(new Task1(1),
+                5,
+                5,
+                TimeUnit.SECONDS);
     }
 
 }

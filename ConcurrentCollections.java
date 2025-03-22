@@ -29,5 +29,11 @@ public class ConcurrentCollections {
         readTread.start();
         writeTread.start();
 
+        try {
+            Thread.sleep(3000);
+        }catch (InterruptedException ex){
+            throw new RuntimeException();
+        }
+        System.out.println("after:-" +list);
     }
 }

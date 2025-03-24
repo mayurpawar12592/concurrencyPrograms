@@ -34,5 +34,20 @@ public class ConCurrentHashMapMethods {
         System.out.println("After replace :" + map);
 
 
+        //remove with just key
+        Integer result4 =map.remove("Four");
+        System.out.println("Result of remove when element is  present :" + result4);
+        System.out.println("After removing element with key :" + map);
+
+        //remove with just key and value when both are present
+        boolean result5=map.remove("Three",3);
+        System.out.println("Result of remove when element is  present :" + result5);
+        System.out.println("After removing element with key and value :" + map);
+
+        //remove with just key and value when both are not present
+        boolean result6=map.remove("One",8);
+        System.out.println("Result of remove when element is  not present :" + result6);
+        System.out.println("After removing element with key and value which is not present :" + map);
+
     }
 }

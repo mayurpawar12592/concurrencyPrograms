@@ -2,7 +2,11 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class ReentranLockExample {
     public static void main(String[] args) {
-
+        Greeting g= new Greeting();
+        MyThread t1= new MyThread(g,"Johny");
+        MyThread t2= new MyThread(g,"sunny");
+        t1.start();
+        t2.start();
     }
 }
 
